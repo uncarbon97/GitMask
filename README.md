@@ -1,5 +1,5 @@
 ## 由来
-偶尔提交代码到 Github 的时候错用了真名和公司邮箱，当然也有反过来的情况。
+偶尔提交代码到 Github 的时候错用了真名和公司邮箱，当然也有反过来的情况。  
 又遇到仓库不允许强制推送，导致不能偷偷摸摸洗掉提交记录……  
 痛定思痛，干脆写个程序来尽量避免尴尬
 
@@ -52,5 +52,5 @@ pyinstaller gitmask.py --onefile -i resource/GitMask.ico
 ```
 
 ## 图标素材来源
-https://www.iconfont.cn/collections/detail?cid=19760
+https://www.iconfont.cn/collections/detail?cid=19760  
 https://www.iconfont.cn/collections/detail?cid=4388
