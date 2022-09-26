@@ -154,6 +154,7 @@ def copy_file(src_path: str, dest_path: str) -> bool:
         with open(dest_path, 'wb') as stream_w:
             stream_w.write(container)
             return True
+    return False
 
 
 def rename_file(src_path: str, dest_path: str) -> bool:

@@ -67,14 +67,14 @@ class EqualsArgExecutionStrategy(AbstractArgExecutionStrategy):
 
     def get_latest_gitconfig_full_path(self) -> str:
         """
-        最后一次匹配成功的本地 gitconfig 文件全路径 GETTER
+        Getter of __latest_gitconfig_full_path
         :return: str
         """
         return self.__latest_gitconfig_full_path
 
     def get_latest_equals_result(self) -> bool:
         """
-        最后一次匹配结果 GETTER
-        :return: str
+        Getter of __latest_equals_result
+        :return: bool
         """
         return self.__latest_equals_result

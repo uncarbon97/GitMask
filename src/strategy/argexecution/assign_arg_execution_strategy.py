@@ -20,14 +20,15 @@ class AssignArgExecutionStrategy(AbstractArgExecutionStrategy):
 
         # 如果执行无误，就能拿到本地 gitconfig 全路径
         self.__equals_strategy.equals_gitconfig(file_name=assign_file_name)
-
+        gitconfig_full_path = self.__equals_strategy.get_latest_gitconfig_full_path()
+        system_gitconfig_full_path = self.__equals_strategy.get_system_gitconfig_full_path()
+        
         if not self.__equals_strategy.get_latest_equals_result():
             # 不相符则替换文件
-            gitconfig_full_path = self.__equals_strategy.get_latest_gitconfig_full_path()
-            system_gitconfig_full_path = self.__equals_strategy.get_system_gitconfig_full_path()
-
-            file_util.copy_file(gitconfig_full_path, system_gitconfig_full_path)
-            print(msg_constant.SUCCESS_ASSIGN_INTO.format(gitconfig_full_path, system_gitconfig_full_path))
-            return
-
-        raise BusinessException(msg_constant.FATAL_ASSIGN_FAIL, gitconfig_full_path, system_gitconfig_full_path)
+            
+            if not file_util.copy_file(gitconfig_full_path, system_gitconfig_full_path):
+                # 替换失败，抛出异常
+                raise BusinessException(msg_constant.FATAL_ASSIGN_FAIL, gitconfig_full_path, system_gitconfig_full_path)
+        
+        # 无论是否相符，都打印覆盖成功的提示
+        print(msg_constant.SUCCESS_ASSIGN_INTO.format(gitconfig_full_path, system_gitconfig_full_path))
